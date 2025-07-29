@@ -1,4 +1,6 @@
 import React, {useState, useEffect}from "react";
+// eslint-disable-next-line no-unused-vars
+import { motion } from 'framer-motion';
 import { getDoctors } from '../utils/network-data';
 import ListAllDoctors from "../components/ListAllDoctors";
 
@@ -20,11 +22,16 @@ function ChatDoctorsPage() {
     return (<p>Loading...</p>);
 
   return (
-      <>
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -40 }}
+      transition={{ duration: 0.5 }}
+    >
       <div className="container-chat-doctors">
         <ListAllDoctors listDoctor={listAllDoctor} listSpecialists={listSpecialists}/>
       </div>
-      </>
+    </motion.div>
   );
 }
 

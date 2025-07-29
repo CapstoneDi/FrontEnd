@@ -1,6 +1,7 @@
 import { getUserLogged, putAccessToken } from './utils/network-data';
 import React, { Component } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import LoginPage from './page/LoginPage';
 import RegisterPage from './page/RegisterPage';
 import HomePage from './page/HomePage';
@@ -82,10 +83,12 @@ class App extends Component {
           </nav>
         </header>
         <main>
-          <Routes>
-            <Route path='/' element={<Admin />} />
-            <Route path="/*" element={<p>404 | Not found</p>} />
-          </Routes>
+          <AnimatePresence mode="wait">
+            <Routes>
+              <Route path='/' element={<Admin />} />
+              <Route path="/*" element={<p>404 | Not found</p>} />
+            </Routes>
+          </AnimatePresence>
         </main>
         </>
       );
@@ -120,23 +123,25 @@ class App extends Component {
         )}
       </header>
       <main>
-        <Routes>
-          {this.state.authedUser ? (
-            <>
-            <Route path='/' element={<HomePage />} />
-            <Route path="/ChatDoctors" element={<ChatDoctorsPage />} />
-            <Route path="/CheckIdeal" element={<BMICalculator />} />
-            <Route path="/doctor/:id" element={<DetailDoctorPage />} />
-            <Route path="/*" element={<p>404 | Not found</p>} />
-            </>
-          ) : (
-            <>
-            <Route path="/" element={<LoginPage loginSuccess={this.onLoginSuccess} />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/*" element={<p>404 | Not found</p>} />
-            </>
-          )} 
-        </Routes>
+        <AnimatePresence mode="wait">
+          <Routes>
+            {this.state.authedUser ? (
+              <>
+              <Route path='/' element={<HomePage />} />
+              <Route path="/ChatDoctors" element={<ChatDoctorsPage />} />
+              <Route path="/CheckIdeal" element={<BMICalculator />} />
+              <Route path="/doctor/:id" element={<DetailDoctorPage />} />
+              <Route path="/*" element={<p>404 | Not found</p>} />
+              </>
+            ) : (
+              <>
+              <Route path="/" element={<LoginPage loginSuccess={this.onLoginSuccess} />} />
+              <Route path="/register" element={<RegisterPage />} />
+              <Route path="/*" element={<p>404 | Not found</p>} />
+              </>
+            )} 
+          </Routes>
+        </AnimatePresence>
       </main>
       </>
     )
