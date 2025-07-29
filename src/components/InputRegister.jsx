@@ -15,7 +15,6 @@ class InputRegister extends React.Component {
   }
 
   submitHandler(event) {
-    console.log('API BASE URL:', import.meta.env.VITE_API_BASE_URL);
     event.preventDefault();
     if (!this.state.fullName || !this.state.email || !this.state.password || !this.state.confirmPassword) {
       alert('Harap isi semua field.');

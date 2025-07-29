@@ -9,6 +9,8 @@ function RegisterPage() {
   const [isloading, setLoading] = useState(false);
 
   async function onRegisterUser(user) {
+    console.log('API BASE URL:', import.meta.env.VITE_API_BASE_URL);
+    alert('API BASE URL:', import.meta.env.VITE_API_BASE_URL);
     setLoading(true);
     const { error } = await register(user);
     setLoading(false);
