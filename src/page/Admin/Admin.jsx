@@ -12,8 +12,7 @@ const Admin = () => {
     name: '',
     specialization: '',
     alamat:'',
-    phone: '',
-    status: 'Aktif'
+    phone: ''
   });
   const [doctors, setDoctors] = useState([]);
   
@@ -33,7 +32,6 @@ const Admin = () => {
           name: doctor.nama,
           specialization: doctor.spesialis,
           phone: doctor.no_wa,
-          status: doctor.status || 'Aktif',
           joinedDate
         };
       });
@@ -43,8 +41,6 @@ const Admin = () => {
   }, []);
 
   const specializations = listSpecializations();
-
-  const statusOptions = ['Aktif', 'Pending', 'Nonaktif'];
 
   const filteredDoctors = doctors.filter(doctor =>
     doctor.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -60,7 +56,6 @@ const Admin = () => {
       specialization: doctor.specialization,
       phone: doctor.phone,
       alamat: doctor.alamat,
-      status: doctor.status
     });
     setShowModal(true);
   };
@@ -79,7 +74,6 @@ const Admin = () => {
       specialization: '',
       phone: '',
       alamat: '',
-      status: 'Aktif'
     });
     setShowModal(true);
   };
@@ -92,7 +86,6 @@ const Admin = () => {
       specialization: '',
       phone: '',
       alamat: '',
-      status: 'Aktif'
     });
   };
 
@@ -138,23 +131,6 @@ const Admin = () => {
     closeModal();
   };
 
-  const getStatusColor = (status) => {
-    switch (status.toLowerCase()) {
-      case 'aktif':
-        return '#28a745';
-      case 'pending':
-        return '#ffc107';
-      case 'nonaktif':
-        return '#dc3545';
-      default:
-        return '#6c757d';
-    }
-  };
-
-  // const getStatusCount = (status) => {
-  //   return doctors.filter(doctor => doctor.status.toLowerCase() === status.toLowerCase()).length;
-  // };
-
   if (!doctors) {
     return (
       <p>Loading...</p>
@@ -171,14 +147,6 @@ const Admin = () => {
               <span className="stat-number">{doctors.length}</span>
               <span className="stat-label">Total Dokter</span>
             </div>
-            {/* <div className="stat-card">
-              <span className="stat-number">{getStatusCount('aktif')}</span>
-              <span className="stat-label">Aktif</span>
-            </div>
-            <div className="stat-card">
-              <span className="stat-number">{getStatusCount('pending')}</span>
-              <span className="stat-label">Pending</span>
-            </div> */}
           </div>
         </div>
 
@@ -213,7 +181,6 @@ const Admin = () => {
                   <th style={{ textAlign: 'center' }}>Spesialisasi</th>
                   <th style={{ textAlign: 'center' }}>No. Telepon</th>
                   <th style={{ textAlign: 'center' }}>Alamat</th>
-                  <th style={{ textAlign: 'center' }}>Status</th>
                   <th style={{ textAlign: 'center' }}>Bergabung</th>
                   <th style={{ textAlign: 'center' }}>Aksi</th>
                 </tr>
@@ -226,14 +193,6 @@ const Admin = () => {
                     <td>{doctor.specialization}</td>
                     <td>{doctor.phone}</td>
                     <td>{doctor.alamat}</td>
-                    <td>
-                      <span 
-                        className={`status-badge ${doctor.status.toLowerCase()}`}
-                        style={{ backgroundColor: getStatusColor(doctor.status) + '20', color: getStatusColor(doctor.status) }}
-                      >
-                        {doctor.status}
-                      </span>
-                    </td>
                     <td>{doctor.joinedDate}</td>
                     <td className="action-buttons">
                       <button
@@ -322,21 +281,6 @@ const Admin = () => {
                   onChange={handleInputChange}
                   required
                 />
-              </div>
-              
-              <div className="form-group">
-                <label htmlFor="status">Status *</label>
-                <select
-                  id="status"
-                  name="status"
-                  value={formData.status}
-                  onChange={handleInputChange}
-                  required
-                >
-                  {statusOptions.map(status => (
-                    <option key={status} value={status}>{status}</option>
-                  ))}
-                </select>
               </div>
             </form>
             <div className="modal-footer">
