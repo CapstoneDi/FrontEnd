@@ -14,9 +14,9 @@ class ListDoctors extends React.Component {
 
   handleDetailDoctorClick(id) {
     if (this.props.history) {
-      this.props.history.push(`/doctor/${id}`);
+      this.props.history.push(`/dokter/${id}`);
     } else if (window && window.location) {
-      window.location.href = `/doctor/${id}`;
+      window.location.href = `/dokter/${id}`;
     }
   }
 

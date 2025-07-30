@@ -28,7 +28,7 @@ function HomePage() {
           <div className="hero-text">
             <h1>KONSULTASI DOKTER<br />KAPAN SAJA, TANPA ANTRI!</h1>
           </div>
-          <img src="src/assets/asset-01.png" alt="Doctors Illustration" />
+          <img src="/assets/asset-01.png" alt="Doctors Illustration" />
         </section>
 
         <div className="container-doctor">
