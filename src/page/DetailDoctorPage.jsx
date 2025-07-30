@@ -15,6 +15,8 @@ function DetailDoctorPage() {
       fetchHistoryDoctor();
   }, [id]));
 
+  console.info(listAllDoctor);
+
   if (!listAllDoctor) {
     return <p>Loading...</p>;
   }
@@ -36,9 +38,10 @@ function DetailDoctorPage() {
       </div>
       <div className="info">
         <h2>{listAllDoctor.nama}</h2>
-        <p><strong>Spesialis:</strong> {listAllDoctor.spesialis}</p>
-        <p><strong>Alamat Praktik:</strong> {listAllDoctor.alamat}</p>
-        <p><strong>Nomor WhatsApp:</strong> {listAllDoctor.no_wa}</p>
+        <p><strong>Spesialis: </strong> {listAllDoctor.spesialis}</p>
+        <p><strong>Alamat Praktik: </strong> {listAllDoctor.alamat}</p>
+        <p><strong>Email: </strong> {listAllDoctor.email}</p>
+        <p><strong>Nomor WhatsApp: </strong> {listAllDoctor.no_wa}</p>
         <button className="whatsapp-btn" type="submit"
           onClick={(e) => {
             e.preventDefault();
