@@ -15,11 +15,13 @@ class App extends Component {
     super(props);
     this.state = {
       authedUser: null,
-      initializing: true
+      initializing: true,
+      isOpen: false
     };
 
     this.onLoginSuccess = this.onLoginSuccess.bind(this);
     this.onLogout = this.onLogout.bind(this);
+    this.toggleMenu = this.toggleMenu.bind(this);
   }
 
   async componentDidMount() {
@@ -63,6 +65,12 @@ class App extends Component {
     window.location.href = '/';
   }
 
+  toggleMenu = () => {
+    this.setState((prevState) => ({
+      isOpen: !prevState.isOpen,
+    }));
+  };
+
   render() {
     if (this.state.initializing) {
       return null;
@@ -100,7 +108,10 @@ class App extends Component {
         {this.state.authedUser ? (
           <>
           <div className="logo">Jaga Sehat</div>
-          <nav className="nav-links">
+          <button className="hamburger" onClick={this.toggleMenu}>
+            ☰
+          </button>
+          <nav className={`nav-links ${this.state.isOpen ? "active" : ""}`}>
             <Link to="/">Home</Link>
             <Link to="/dokter">Pesan dengan Dokter</Link>
             <Link to="/CheckIdeal">Cek Badan Ideal</Link>
