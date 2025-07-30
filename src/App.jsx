@@ -102,7 +102,7 @@ class App extends Component {
           <div className="logo">Jaga Sehat</div>
           <nav className="nav-links">
             <Link to="/">Home</Link>
-            <Link to="/ChatDoctors">Pesan dengan Dokter</Link>
+            <Link to="/dokter">Pesan dengan Dokter</Link>
             <Link to="/CheckIdeal">Cek Badan Ideal</Link>
             <button onClick={this.onLogout} style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}>
             <img
@@ -128,9 +128,9 @@ class App extends Component {
             {this.state.authedUser ? (
               <>
               <Route path='/' element={<HomePage />} />
-              <Route path="/ChatDoctors" element={<ChatDoctorsPage />} />
+              <Route path="/dokter" element={<ChatDoctorsPage />} />
               <Route path="/CheckIdeal" element={<BMICalculator />} />
-              <Route path="/doctor/:id" element={<DetailDoctorPage />} />
+              <Route path="/dokter/:id" element={<DetailDoctorPage />} />
               <Route path="/*" element={<p>404 | Not found</p>} />
               </>
             ) : (
