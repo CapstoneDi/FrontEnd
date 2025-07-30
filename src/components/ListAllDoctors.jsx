@@ -44,7 +44,7 @@ class ListAllDoctors extends React.Component {
   render() {
     return (
       <>
-      <h1 style={{ textAlign: "center" }}>Daftar Semua Dokter</h1>
+      <h1 style={{ textAlign: "center", marginBottom: "2rem" }}>Daftar Semua Dokter</h1>
       <label htmlFor="specialist-select" style={{ marginRight: "10px", marginTop: "10px" }}>Pilih Spesialis:</label>
       <select id="specialist-select" style={{ marginTop: "10px" }} onChange={this.onSpecialistChange}>
         <option value="">Semua Spesialis</option>
