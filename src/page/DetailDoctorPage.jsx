@@ -34,7 +34,7 @@ function DetailDoctorPage() {
     <>
     <div className="doctor-detail">
       <div className="doctor-card-detail">
-        <img src="https://img.icons8.com/color/96/doctor-female.png" alt="dr. Clara" />
+        <img src="https://img.icons8.com/color/96/doctor-male.png" alt="dr. Clara" />
       </div>
       <div className="info">
         <h2>{listAllDoctor.nama}</h2>
