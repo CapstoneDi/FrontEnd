@@ -15,8 +15,6 @@ function DetailDoctorPage() {
       fetchHistoryDoctor();
   }, [id]));
 
-  console.info(listAllDoctor);
-
   if (!listAllDoctor) {
     return <p>Loading...</p>;
   }
