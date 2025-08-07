@@ -1,8 +1,9 @@
 import React, {useState, useEffect}from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
-import ListHistoryDoctors from "../components/ListHistoryDoctors";
 import { getHistoryDoctors } from '../utils/network-data';
+import ListHistoryDoctors from "../components/ListHistoryDoctors";
+import LoadingPage from "../components/Loading";
 
 function HomePage() {
 
@@ -36,7 +37,7 @@ function HomePage() {
           <ListHistoryDoctors listDoctor={listHistoryDoctor} />
         </div>
         </>
-      ) : (<p>Loading...</p>)}
+      ) : <LoadingPage />}
     </motion.div>
   );
 }

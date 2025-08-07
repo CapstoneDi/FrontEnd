@@ -9,6 +9,7 @@ import DetailDoctorPage from './page/DetailDoctorPage';
 import ChatDoctorsPage from './page/ChatDoctorsPage';
 import BMICalculator from './page/cek-ideal-badan/BMICalculator';
 import Admin from './page/Admin/Admin';
+import LoadingPage from './components/Loading';
 
 class App extends Component {
   constructor(props){
@@ -16,7 +17,8 @@ class App extends Component {
     this.state = {
       authedUser: null,
       initializing: true,
-      isOpen: false
+      isOpen: false,
+      isLoading: false
     };
 
     this.onLoginSuccess = this.onLoginSuccess.bind(this);
@@ -45,12 +47,18 @@ class App extends Component {
   }
 
   async onLoginSuccess({ accessToken }) {
+    this.setState(() => {
+      return {
+        isLoading: true
+      }
+    });
     putAccessToken(accessToken);
     const { data } = await getUserLogged();
 
     this.setState(() => {
       return {
-        authedUser: data
+        authedUser: data,
+        isLoading: false
       };
     });
   }
@@ -74,6 +82,10 @@ class App extends Component {
   render() {
     if (this.state.initializing) {
       return null;
+    }
+
+    if (this.state.isLoading) {
+      return <LoadingPage />
     }
 
     if (this.state.authedUser !== null && this.state.authedUser.user.id === 'admin') {
