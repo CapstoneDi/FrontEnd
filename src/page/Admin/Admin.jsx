@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import './Admin.css';
 import { addDoctor, getDoctors, editDoctor, deleteDoctor } from '../../utils/network-data';
 import listSpecializations from '../../utils/listSpecializations';
-import './Admin.css';
+import LoadingPage from '../../components/Loading';
 
 const Admin = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -132,9 +133,7 @@ const Admin = () => {
   };
 
   if (!doctors) {
-    return (
-      <p>Loading...</p>
-    );
+    return <LoadingPage />;
   }
 
   return (

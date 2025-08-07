@@ -2,7 +2,7 @@ import React, {useState, useEffect}from "react";
 import { getDoctorsById } from '../utils/network-data';
 import { useParams } from "react-router-dom";
 import { addCollaborations } from "../utils/network-data";
-
+import LoadingPage from "../components/Loading";
 
 function DetailDoctorPage() {
   const { id } = useParams();
@@ -16,7 +16,7 @@ function DetailDoctorPage() {
   }, [id]));
 
   if (!listAllDoctor) {
-    return <p>Loading...</p>;
+    return <LoadingPage />
   }
 
   async function handlerSandMessage(doctorId, nomorWhatsApp) {

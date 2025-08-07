@@ -3,6 +3,7 @@ import React, {useState, useEffect}from "react";
 import { motion } from 'framer-motion';
 import { getDoctors } from '../utils/network-data';
 import ListAllDoctors from "../components/ListAllDoctors";
+import LoadingPage from "../components/Loading";
 
 function ChatDoctorsPage() {
   const [listAllDoctor, setlistAllDoctor] = useState(
@@ -19,7 +20,7 @@ function ChatDoctorsPage() {
     : [];
 
   if (!listAllDoctor)
-    return (<p>Loading...</p>);
+    return <LoadingPage />;
 
   return (
     <motion.div
